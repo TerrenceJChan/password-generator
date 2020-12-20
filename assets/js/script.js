@@ -24,7 +24,17 @@ function generatePassword() {
   var uppercaseBox = confirm("Would you like to have uppercase letters in your password?");
   var symbolsBox = confirm("Would you like to have symbols in your password?");
   var numbersBox = confirm("Would you like to have numbers in your password?");
-  // var length = document.getElementById("length").value;
+
+  var length = 0;
+
+  while (length < 8 || length > 128 || Number.isInteger(length) === false) {
+    length = parseInt(prompt("Please enter the length of your password. The length of your password must be between 8 to 128 characters long."));
+    console.log(length);
+    if (length < 8 || length > 128 || Number.isInteger(length) === false) {
+      alert("Your input is invalid. Please enter an integer between 8 to 128");
+      console.log(length);
+    }
+  }
 
 
   if (lowercaseBox === true) {
@@ -47,18 +57,18 @@ function generatePassword() {
     passwordString = passwordString + symbolChars.charAt(randomNumber(symbolChars.length));
     length--;
   }
-  console.log(passwordString);
+
   if (numbersBox === true) {
     const numberChars = "0123456789";
     charPool = charPool + numberChars;
     passwordString = passwordString + numberChars.charAt(randomNumber(numberChars.length));
     length--;
   }
-  console.log(passwordString);
+
   for (i = length; i != 0; i--) {
     passwordString = passwordString + charPool.charAt(randomNumber(charPool.length));
   }
-  console.log(passwordString);
+
   return randomizer();
 }
 
@@ -73,7 +83,7 @@ function randomizer() {
   var splitLength = splitString.length;
   var randomizedString = "";
 
-  // Durstenfeld sort method
+  // Durstenfeld shuffle method
   for (i = splitLength - 1; i > -1; i--) {
     var j = Math.floor(Math.random() * i);
     var tempChar = splitString[i];
