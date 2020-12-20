@@ -15,16 +15,17 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
 // Logic for generating password
 function generatePassword() {
-  var lowercaseBox = document.getElementById("lowercase").checked;
-  var uppercaseBox = document.getElementById("uppercase").checked;
-  var symbolsBox = document.getElementById("symbols").checked;
-  var numbersBox = document.getElementById("numbers").checked;
-  var length = document.getElementById("length").value;
+  alert("You will be presented with five prompts to set the criteria for your desired password. Please confirm if you would like to have: lowercase letters, uppercase letters, symbols, numbers, and how long you would like your password to be.");
+  var lowercaseBox = confirm("Would you like to have lowercase letters in your password?");
+  var uppercaseBox = confirm("Would you like to have uppercase letters in your password?");
+  var symbolsBox = confirm("Would you like to have symbols in your password?");
+  var numbersBox = confirm("Would you like to have numbers in your password?");
+  // var length = document.getElementById("length").value;
+
 
   if (lowercaseBox === true) {
     const lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
