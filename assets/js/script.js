@@ -29,41 +29,62 @@ function generatePassword() {
   if (lowercaseBox === true) {
     const lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
     charPool = charPool + lowercaseChars;
-    passwordString = passwordString + lowercaseChars.charAt(randomNumber(lowercaseChars.length + 1));
+    passwordString = passwordString + lowercaseChars.charAt(randomNumber(lowercaseChars.length));
     length--;
   }
 
   if (uppercaseBox === true) {
     const uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     charPool = charPool + uppercaseChars;
-    passwordString = passwordString + uppercaseChars.charAt(randomNumber(uppercaseChars.length + 1));
+    passwordString = passwordString + uppercaseChars.charAt(randomNumber(uppercaseChars.length));
     length--;
   }
 
   if (symbolsBox === true) {
     const symbolChars = " !\"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~";
     charPool = charPool + symbolChars;
-    passwordString = passwordString + symbolChars.charAt(randomNumber(symbolChars.length + 1));
+    passwordString = passwordString + symbolChars.charAt(randomNumber(symbolChars.length));
     length--;
   }
-
+  console.log(passwordString);
   if (numbersBox === true) {
     const numberChars = "0123456789";
     charPool = charPool + numberChars;
-    passwordString = passwordString + numberChars.charAt(randomNumber(numberChars.length + 1));
+    passwordString = passwordString + numberChars.charAt(randomNumber(numberChars.length));
     length--;
   }
-
+  console.log(passwordString);
   for (i = length; i != 0; i--) {
-    passwordString = passwordString + charPool.charAt(randomNumber(charPool.length + 1));
+    passwordString = passwordString + charPool.charAt(randomNumber(charPool.length));
   }
-
-  return passwordString;
+  console.log(passwordString);
+  return randomizer();
 }
 
 // Get random number with maximum limit specified
 function randomNumber(x) {
   return Math.floor(Math.random() * x);
+}
+
+// Further randomizes password string
+function randomizer() {
+  var splitString = passwordString.split('');
+  var splitLength = splitString.length;
+  var randomizedString = "";
+
+  // Durstenfeld sort method
+  for (i = splitLength - 1; i > -1; i--) {
+    var j = Math.floor(Math.random() * i);
+    var tempChar = splitString[i];
+    splitString[i] = splitString[j];
+    splitString[j] = tempChar;
+  }
+
+  for (i = splitLength - 1; i > -1; i--) {
+    randomizedString = randomizedString + splitString[i];
+  }
+
+  return randomizedString;
 }
 
 // Add event listener to generate button
