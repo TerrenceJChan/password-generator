@@ -1,6 +1,7 @@
 # Password Generator
 🔗 [Terrence's Password Generator](https://terrencejchan.github.io/password-generator/)  
   
+![Screenshot of dialog box.](./assets/screenshots/instructions.jpg "App Screenshot")
 
 This app generates a random password taken from the parameters given by the user. The user can select if they would like their password to include lowercase letters, uppercase letters, symbols, and numbers. The user can specify a password with a length between 8 to 128 characters.  
   
