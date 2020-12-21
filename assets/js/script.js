@@ -20,10 +20,17 @@ function writePassword() {
 // Logic for generating password
 function generatePassword() {
   alert("You will be presented with five prompts to set the criteria for your desired password. Please confirm if you would like to have: lowercase letters, uppercase letters, symbols, numbers, and how long you would like your password to be.");
-  var lowercaseBox = confirm("Would you like to have lowercase letters in your password?");
-  var uppercaseBox = confirm("Would you like to have uppercase letters in your password?");
-  var symbolsBox = confirm("Would you like to have symbols in your password?");
-  var numbersBox = confirm("Would you like to have numbers in your password?");
+
+  do {
+    var lowercaseBox = confirm("Would you like to have lowercase letters in your password?");
+    var uppercaseBox = confirm("Would you like to have uppercase letters in your password?");
+    var symbolsBox = confirm("Would you like to have symbols in your password?");
+    var numbersBox = confirm("Would you like to have numbers in your password?");
+
+    if (lowercaseBox === false && uppercaseBox === false && symbolsBox === false && numbersBox === false) {
+      alert("Please select at least one character type to include in your password.")
+    }
+  } while (lowercaseBox === false && uppercaseBox === false && symbolsBox === false && numbersBox === false);
 
   var length = 0;
 
